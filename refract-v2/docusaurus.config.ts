@@ -112,7 +112,7 @@ const config: Config = {
             },
             {
               label: 'API Reference',
-              to: '/docs/api/api-reference-list',
+              to: '/docs/api-reference',
             },
           ],
         },
@@ -156,8 +156,8 @@ const config: Config = {
     // install Biel.ai assistant plugin
     plugins: [
       ['docusaurus-biel',{
-          project: '<YOUR_PROJECT_ID>',
-          headerTitle: 'Biel.ai assistant',
+          project: '<YOUR_PROJECT_ID>', // add the project ID
+          headerTitle: 'Refract chatbot assistant',
           version: 'latest'
         }
       ]

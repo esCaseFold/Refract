@@ -1,12 +1,12 @@
 ---
-title: API Reference List
+title: API Reference
 sidebar_position: 4
-slug: /api-reference-list
+slug: /api-reference
 ---
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-The full list of all Refract commands/APIs with its syntax and parameters. For step-by-step examples, see the guides in [Concepts](/docs/concepts/components.md).
+The full list of all Refract commands/APIs with its syntax and parameters. For step-by-step examples, see the guides in [Concepts](../concepts/refractions.md).
 
 ## Quick Reference
 
@@ -16,17 +16,25 @@ The full list of all Refract commands/APIs with its syntax and parameters. For s
 | `createApp(data)` | Creation | Initializes and mounts the app |
 | `createComponent()` | Creation | Builds a functional component |
 | `createOptics()` | Creation | Builds a new Optic |
-| `.useRefraction()` | `null` | Applies a refraction to a lens |
-| `.useOptic()` | `null` | Applies an optic to a lens |
-| `.useState()` | `null` | Adds a state to a lens |
+| `refraction(initialValue)` | Refraction | Creates a new reactive refraction |
+| `refraction.get()` | Refraction | Reads the current value |
+| `refraction.set(value)` | Refraction | Replaces with a new value |
+| `refraction.update(fn)` | Refraction | Updates based on the previous value |
+| `refraction.focus(lens)` | Refraction | Returns a focused refraction for a nested property |
+| `derive(fn)` | Refraction | Creates a derived refraction that recomputes when its dependencies change |
+| `effect(fn)` | Refraction | Runs a side effect whenever the refractions accessed inside fn change |
+| `useRefraction(refraction)` | Refraction | Hook for binding a refraction to a React component |
+| `lens` | Lens | Creates a new lens |
+| `.useLens()` | Lens | Binds a lens to a React component |
+
+
+| `.useOptic()` | Optic | Applies an optic to a lens |
+| `.useState()` | State | Adds a state to a lens |
 | `.useEffect()` | Side Effect | Runs a side effect |
 | `.useOptic()` | Side Effect | Applies an optic to a lens |
 | `.useFlash()` | Side Effect | Runs a flash effect |
 
-## Creation
-APIs used to create a Refract project and Refract apps, components, and optics.
-
-### `create refract-js my-app`
+### Quickstart:`create refract-js my-app`
 Use to quickly create files and install Refract and necessary dependencies.
 
 <Tabs groupId="package-manager">
@@ -48,6 +56,10 @@ Use to quickly create files and install Refract and necessary dependencies.
 </Tabs>
 
 See [Example Files](../getting-started/installation.mdx#example-files) for details.
+
+
+## Creation
+APIs used to create a Refract project and Refract apps, components, and optics.
 
 ### `createApp(data)`
 Lorum ipsum
@@ -81,6 +93,53 @@ Similar to [React hooks](https://react.dev/reference/react/hooks) but with depen
 
 ```
 
+## Refractions
+For full details see [Refractions](../concepts/refractions.md)
+
+```js title="Creates a new reactive refraction"
+refraction(initialValue)
+```
+
+```js title="Read the current value"
+refraction.get();
+```
+
+```js title="Replace with a new value"
+refraction.set(value);
+```
+
+```js title="Update based on previous value"
+refraction.update(fn);
+```
+
+```js title="Returns a focused refraction for a nested property"
+refraction.focus(lens);
+```
+
+```js title="Creates a derived refraction that recomputes when its dependencies change"
+derive(fn);
+```
+
+```js title="Hook for binding a refraction to a React component"
+useRefraction(refraction);
+```
+
+```js title="Runs a side effect whenever the refractions accessed inside fn change"
+effect(fn);
+```
+
+## Optics
+For full details see [Optics](../concepts/optical-composition.md)
+
+## Lenses
+For full details see [Lenses](../concepts/lenses.md)
+
+```js
+import { useLens, lens } from "refract/lens";
+```
+
+
+
 ## Use Commands **use better term**
 
 ### `.useState()`
@@ -103,7 +162,7 @@ console.log(theme.value); // 'dark'
 ```
 
 ## Side Effect
-For fully detailed examples see [Side Effects](/concepts/side-effects.md)
+For fully detailed examples see [Side Effects](../concepts/side-effects.md)
 
 ### `.useEffect`
 Lorum ipsum
