@@ -7,28 +7,28 @@ on:
     # Review gh actions docs if you want to further define triggers, paths, etc
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
+# Modified by Claude to run from the refract-v2 directory
 jobs:
   build:
-    name: Build Docusaurus
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: refract-v2
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
+          cache-dependency-path: refract-v2/package-lock.json
 
-      - name: Install dependencies
-        run: npm ci
-      - name: Build website
-        run: npm run build
+      - run: npm ci
+      - run: npm run build
 
-      - name: Upload Build Artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
-          path: build
+          path: refract-v2/build
 
   deploy:
     name: Deploy to GitHub Pages
