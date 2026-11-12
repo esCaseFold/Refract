@@ -16,4 +16,4 @@ While this shares similarities to [React](https://react.dev) (like components, h
 Refract encourages pure function-driven UIs, uses refractive signals (a reactivity system like [Svelte’s stores](https://svelte.dev/docs/svelte/stores) or [Solid.js signals](https://docs.solidjs.com/concepts/signals#signals)), and introduces the concept of optical composition—modular patterns for UI logic reuse.
 
 ## Next
-To get started with Refract immediately, click on [Quickstart](./quickstart.mdx). For full installation instructions, go to [Installation](./installation.mdx). And to fully explore the abilites of Reflect, go to [Components](../concepts/components.md).
+To get started with Refract immediately, click on [Quickstart](./quickstart.mdx). For full installation instructions, go to [Installation](./installation.mdx). And to fully explore the abilites of Reflect, go to [Concepts](../concepts/refractions.md).
