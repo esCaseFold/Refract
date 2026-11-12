@@ -1,6 +1,6 @@
 ---
-title: Refraction
-sidebar_position: 2
+title: Refractions
+sidebar_position: 1
 ---
 
 A **refraction** is a reactive unit of state.

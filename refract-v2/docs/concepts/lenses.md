@@ -1,6 +1,6 @@
 ---
 title: Lenses
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 - Think of lenses as the bridge between props, refractions, and effects.

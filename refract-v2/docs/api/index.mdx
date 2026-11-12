@@ -12,16 +12,16 @@ The full list of all Refract commands/APIs with its syntax and parameters. For s
 
 | Name | Type | Description |
 |---|---|---|
-| `create refract-js my-app` | Quickstart | Creates default set-up for Refract |
-| `createApp(data)` | Creation | Creates a new Refract app |
-| `createComponent()` | Creation | Creates new Refract Component |
-| `createOptics()` | Creation | Creates new Refract Optic |
-| `.useRefraction()` | `null` | Adds every element |
-| `.useOptic()` | `null` | Adds every element |
-| `.useState()` | `null` | Adds every element |
-| `.useEffect()` | Side Effect | Adds every element |
-| `.useOptic()` | Side Effect | Averages every element |
-| `.useFlash()` | Side Effect | Finds the largest element |
+| `create refract-js my-app-name` | Quickstart | Creates default set-up for Refract |
+| `createApp(data)` | Creation | Initializes and mounts the app |
+| `createComponent()` | Creation | Builds a functional component |
+| `createOptics()` | Creation | Builds a new Optic |
+| `.useRefraction()` | `null` | Applies a refraction to a lens |
+| `.useOptic()` | `null` | Applies an optic to a lens |
+| `.useState()` | `null` | Adds a state to a lens |
+| `.useEffect()` | Side Effect | Runs a side effect |
+| `.useOptic()` | Side Effect | Applies an optic to a lens |
+| `.useFlash()` | Side Effect | Runs a flash effect |
 
 ## Creation
 APIs used to create a Refract project and Refract apps, components, and optics.
@@ -47,7 +47,7 @@ Use to quickly create files and install Refract and necessary dependencies.
     </TabItem>
 </Tabs>
 
-See (not working fix this!)[Example Files](../installation.mdx#example-files) for details.
+See [Example Files](../getting-started/installation.mdx#example-files) for details.
 
 ### `createApp(data)`
 Lorum ipsum

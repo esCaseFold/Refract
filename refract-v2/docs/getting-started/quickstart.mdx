@@ -39,8 +39,7 @@ Use the following command to create a new default Refract project:
     </TabItem>
 </Tabs>
 
-## Step 1
-Familiarize yourself with the project structure and write the following the the files. 
+## Step 1: Confirm that your project was created successfully
 
 ```plaintext
 my-app-name/
@@ -62,8 +61,7 @@ export default defineConfig({
 });
 ```
 
-## Step 2
-**Create your HTML root file**
+## Step 2: Create your HTML root file
 
 Every Refract app needs an HTML file to serve as the root and to configure the display.
 
@@ -84,8 +82,7 @@ Open `public/index.html` and add the following:
 </html>
 ```
 
-## Step 3
-**Initialize your Refract app**
+## Step 3: Initialize your Refract app
 
 Now, you need an entry point to launch your Refract app.
 Inside `src/main.js`, add the following code:
@@ -98,8 +95,7 @@ const app = createApp(App);
 app.mount("#root");
 ```
 
-## Step 4
-**Build your first Refract component!**
+## Step 4: Build your first Refract component!
 
 Next, let's define a simple component that displays a message and responds to user interaction.
 Open `src/App.js` and add the following:
@@ -133,8 +129,7 @@ const App = createComponent(({ lens }) => {
 export default App;
 ```
 
-## Step 5
-**Run your development server**
+## Step 5: Run your development server
 
 Time to see the result!
 
@@ -153,8 +148,7 @@ You should see output similar to:
   ➜  press q to quit
 ```
 
-## Step 6
-**View your app in the browser**
+## Step 6: View your app in the browser
 
 Open your browser and navigate to `http://localhost:5173` (or the URL shown in your terminal). You should see your Refract app displaying the following:
 
@@ -165,6 +159,6 @@ Congratulations!
 You've successfully created and run your first Refract component! 
 From here, you can start exploring more features and building out your application. Happy coding!
 
-## Next Steps
+## Next
 
 Proceed to the [Concepts](/docs/concepts/components.md) category to understand the core concepts behind Refract and how it can help you build animated UIs.

@@ -7,7 +7,7 @@ const CardList = [
   {
     title: 'Refraction',
     description: 'Reactive unit of state, similar to signals or refs.',
-    to: '/docs/concepts/refraction',
+    to: '/docs/concepts/refractions',
     emoji: '🌈💎', 
   },
   {
@@ -27,6 +27,12 @@ const CardList = [
     description: 'Reusable components for building reactive applications. TypeScript compatible.',
     to: '/docs/concepts/components',
     emoji: '🧩',
+  },
+  {
+    title: 'Side Effects',
+    description: 'Effects that run in response to changes in state or props.',
+    to: '/docs/concepts/side-effects',
+    emoji: '⚡',
   },
 ];
 
