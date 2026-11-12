@@ -1,0 +1,270 @@
+---
+title: Installation
+sidebar_position: 2
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Refract has been designed from the start for gradual adoption. You can use as little or as much Refract as you need. Whether you want to get a taste of Refract, add some interactivity to an HTML page, or start a complex React-powered app, this section will help you get started.
+
+:::info[In this guide]
+**You will learn how to:**
+
+- Install Refract
+
+- Create Your First App
+
+- Understand the basic project structure
+:::
+
+## Required
+[Node.js](https://nodejs.org/en) version 20.0 or above is required to run Refract (which can be checked by running `node -v`).
+
+## Installation Options
+
+You can choose to [use the CLI to automatically set up a project](#use-the-cli-to-set-up-a-project), [install on an existing project](#install-to-existing-project-as-plugin), or [create a new project from scratch for Refract](#new-project).
+
+### Use the CLI to Set Up a Project
+
+To use the CLI to set up a new Refract project, run:
+
+```bash
+npm create refract-js my-app
+cd my-app
+npm install
+npm run dev //or vite dev
+```
+
+This will create a new project named `my-app` with the basic structure and dependencies already set up. You can then start the development server and view your app in the browser at `http://localhost:5173`.
+
+See [Quickstart](./quickstart) for basic demo.
+
+### Install to Existing Project as Plugin
+
+#### 1. Navigate to your project directory:
+
+```bash title="Terminal"
+cd path/to/your-project
+```
+
+#### 2. Install Refract and the necessary dependencies:
+<Tabs groupId="package-manager">
+	<TabItem value='npm' label='npm' default>
+   		```bash 
+		npm install refract-js@latest vite @vitejs/plugin-react
+		```
+   	</TabItem>
+   	<TabItem value='yarn' label='Yarn'>
+   		```bash
+		yarn add refract-js@latest vite @vitejs/plugin-react
+		```
+   	</TabItem>
+   	<TabItem value='pnpm' label='pnpm'>
+   		```bash
+		pnpm add refract-js@latest vite @vitejs/plugin-react
+		```
+	</TabItem>
+</Tabs>
+
+#### 3. Ensure your project structure includes the necessary files:
+```plaintext
+my-app/
+├── public/
+│   └── index.html
+├── src/
+│   ├── App.js
+│   └── main.js
+└── vite.config.js
+```
+[See the project structure](#4-create-the-basic-project-structure) and the [example files](#example-files) for reference.
+
+#### 4. Update your `package.json` scripts to include a start script for Vite:
+
+```json title="package.json"
+"scripts": {
+	"dev": "vite",
+	"build": "vite build",
+	"serve": "vite preview"
+}
+```
+And you're ready to go!
+
+### New Project
+
+To create a new Refract project from scratch, follow these steps:
+
+#### 1. Create a new directory for your project and navigate into it:
+
+```bash
+mkdir your-project-name
+cd your-project-name
+```
+
+These commands make a folder named "your-project-name" and focuses your terminal on it. Feel free to change your-project-name to the prefered name for your project.
+
+#### 2. Initialize a new `package.json` file:
+
+```bash
+npm init -y
+```
+The `-y` flag makes `package.json` automatically use default values for all fields. You can add to this later as necessary.
+
+#### 3. Install Refract and its dependencies:
+
+<Tabs groupId="package-manager">
+	<TabItem value='npm' label='npm' default>
+   		```bash 
+		npm install refract-js@latest vite @vitejs/plugin-react
+		```
+   	</TabItem>
+   	<TabItem value='yarn' label='Yarn'>
+   		```bash
+		yarn add refract-js@latest vite @vitejs/plugin-react
+		```
+   	</TabItem>
+   	<TabItem value='pnpm' label='pnpm'>
+   		```bash
+		pnpm add refract-js@latest vite @vitejs/plugin-react
+		```
+	</TabItem>
+</Tabs>
+
+This command also installs Vite and its React plugin.
+
+#### 4. Create the basic project structure:
+
+Use the following commands to create the basic project structure:
+```bash
+mkdir -p public src
+touch public/index.html src/App.js src/main.js vite.config.js
+```
+The result should look like this:
+```plaintext
+your-project-name/
+├── public/
+│   └── index.html
+├── src/
+│   ├── App.js
+│   └── main.js
+├── package.json
+└── vite.config.js
+```
+
+Here's a brief overview of each part:
+
+- `public/index.html`: The main HTML file that serves your app.
+- `src/`: This folder contains your JavaScript source files.
+- `package.json`: Manages your project dependencies and scripts.
+- `vite.config.js`: Configuration file for Vite.
+
+#### 5. Add the following content to the `vite.config.js` file:
+
+```js title="vite.config.js"
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+export default defineConfig({
+	plugins: [react()],
+});
+```
+This configuration enables Vite to work with the React plugin.
+
+#### 6. Add a start script to your `package.json`:
+
+```json title="package.json"
+{
+  "scripts": {
+	"dev": "vite",
+	"build": "vite build",
+	"serve": "vite preview"
+  }
+}
+```
+
+#### 7. Now you can start your project by running:
+
+```bash title="Start development server using Vite"
+vite dev
+```
+Or use your preferred package manager:
+<Tabs groupId="package-manager">
+	<TabItem value='npm' label='npm' default>
+   		```bash 
+		npm run dev
+		```
+   	</TabItem>
+   	<TabItem value='yarn' label='Yarn'>
+   		```bash
+		yarn dev
+		```
+   	</TabItem>
+   	<TabItem value='pnpm' label='pnpm'>
+   		```bash
+		pnpm dev
+		```
+	</TabItem>
+</Tabs>
+
+## Troubleshooting
+
+If you encounter issues with Refract, consider the following ideas:
+
+- Check the browser console for any error messages that might indicate what went wrong.
+- Check your internet connection, as npm/yarn/pnpm needs to download packages.
+- Ensure that your Node.js version is 20.0 or above, as Refract requires this version or higher.
+- Verify that all dependencies are correctly installed by running `npm install` or the equivalent command for your package manager.
+- If the problem persists, consult the Refract documentation or seek help from the community forums.
+
+## Example Files
+
+Here's a complete example of the Refract files for reference:
+
+```html title="public/index.html"
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Refract App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
+```
+```js title="src/App.js"
+import React from "react";
+
+function App() {
+  return (
+    <div>
+      <h1>Hello, Refract!</h1>
+    </div>
+  );
+}
+
+export default App;
+```
+```js title="src/main.js"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+```js title="vite.config.js"
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+export default defineConfig({
+  plugins: [react()],
+});
+```
+
+## Next Steps
+Once you have successfully installed Refract and set up your project, you can proceed to the [Quickstart guide](./quickstart) to create your first Refract component and start building your application.
+

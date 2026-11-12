@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Refract Docs v2',
-  tagline: 'False documentation site',
+  tagline: 'A reactive, composable, and refraction-based JavaScript framework for building user interfaces with clarity.',
   favicon: 'img/refract-logo.jpg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -18,6 +18,7 @@ const config: Config = {
   url: 'https://your-docusaurus-site.example.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
+  //baseUrl: '/Refract/', // Uncomment this when deploying to GitHub Pages
   baseUrl: '/',
 
   // GitHub pages deployment config.
@@ -102,13 +103,21 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Documentation',
-              to: '/docs/welcome.mdx',
+              label: 'Getting Started',
+              to: '/docs/getting-started/intro',
+            },
+            {
+              label: 'Concepts',
+              to: '/docs/concepts/components',
+            },
+            {
+              label: 'API Reference',
+              to: '/docs/api/api-reference-list',
             },
           ],
         },
         {
-          title: 'Community',
+          title: '[Docusaurus] Community',
           items: [
             {
               label: 'Stack Overflow',
@@ -124,14 +133,35 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'GitHub',
+              label: 'Refract GitHub',
               href: 'https://github.com/esCaseFold/Refract',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Refract Docs. By Ethan Sattersten. Built with Docusaurus.`,
+      copyright: `Apache License | Copyright © ${new Date().getFullYear()} Refract Docs. By Ethan Sattersten. Built with Docusaurus.`,
     },
+    // agolia search settings
+    algolia: {
+      // The application ID provided by Algolia
+      appId: 'D1XA5UFQT8',
+
+      // Public API key: it is safe to commit it
+      apiKey: '0ca50baee81720eaebc37232a608758f',
+
+      indexName: 'prod_Refract-Docs',
+      // Optional: whether you want to use the new Ask AI feature (undefined by default)
+      // askAi: 'YOUR_ALGOLIA_ASK_AI_ASSISTANT_ID',
+    },
+    // install Biel.ai assistant plugin
+    plugins: [
+      ['docusaurus-biel',{
+          project: '<YOUR_PROJECT_ID>',
+          headerTitle: 'Biel.ai assistant',
+          version: 'latest'
+        }
+      ]
+    ],
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,

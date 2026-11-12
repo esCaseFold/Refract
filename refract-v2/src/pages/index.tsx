@@ -9,6 +9,7 @@ import Heading from '@theme/Heading';
 import styles from './index.module.css';
 // React imports
 import { useState, useEffect } from "react";
+import HomepageCards from '@site/src/components/HomepageCards';
 
 type FeatureItem = {
   title: string;
@@ -40,46 +41,9 @@ function HomepageHeader() {
                   "button button--primary button--lg",
                   styles.primaryButton
                 )}
-                to='/docs/intro'>
+                to='/docs/getting-started/intro'>
                 <span>Get Started</span>
               </Link>
-              <Link
-                className={clsx(
-                  "button button--secondary button--lg",
-                  styles.secondaryButton
-                )}
-                to='/docs/Tutorials/counter-app'>
-                <span>📖 Tutorial</span>
-              </Link>
-            </div>
-          </div>
-
-          <div className={styles.codePreview}>
-            <div className={styles.codeHeader}>
-              <div className={styles.codeDots}>
-                <span className={styles.dot}></span>
-                <span className={styles.dot}></span>
-                <span className={styles.dot}></span>
-              </div>
-              <div className={styles.codeTitle}>Quick Start</div>
-            </div>
-            <div className={styles.codeContent}>
-              <pre className={styles.codeBlock}>
-                <code>{`// Install the library
-npm install @refract/core
-
-// Initialize and use
-import { createRefraction } from '@refract/core';
-
-const state = createRefraction({
-  count: 0,
-  user: null
-});
-
-// Reactive updates
-state.count.set(42);
-console.log(state.count.get()); // 42`}</code>
-              </pre>
             </div>
           </div>
         </div>
@@ -88,15 +52,39 @@ console.log(state.count.get()); // 42`}</code>
   );
 }
 
+function CoreConcepts() {
+  return(
+      <section className={styles.featuresSection}>
+        <div className='container'>
+          <div className={styles.sectionHeader}>
+            <Heading
+              as='h2'
+              className={clsx(styles.sectionHeading, "text--center")}>
+              Core Concepts
+            </Heading>
+            <p className={clsx(styles.sectionSubheading, "text--center")}>
+              Discover the powerful building blocks that make our platform unique.
+              Official libraries come with enhanced support and documentation.
+            </p>
+          </div>
+          <HomepageCards />
+        </div>
+      </section>
+
+
+  );
+}
+
 export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Build reactive applications with Refract. Modern state management with signals, lenses, and optics. TypeScript-first, performance-optimized, and developer-friendly.">
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
+        <CoreConcepts />
+        {/* <HomepageFeatures /> */}
       </main>
     </Layout>
   );

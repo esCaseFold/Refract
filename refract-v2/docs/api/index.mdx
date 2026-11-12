@@ -1,0 +1,141 @@
+---
+title: API Reference List
+sidebar_position: 4
+slug: /api-reference-list
+---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+The full list of all Refract commands/APIs with its syntax and parameters. For step-by-step examples, see the guides in [Concepts](/docs/concepts/components.md).
+
+## Quick Reference
+
+| Name | Type | Description |
+|---|---|---|
+| `create refract-js my-app` | Quickstart | Creates default set-up for Refract |
+| `createApp(data)` | Creation | Creates a new Refract app |
+| `createComponent()` | Creation | Creates new Refract Component |
+| `createOptics()` | Creation | Creates new Refract Optic |
+| `.useRefraction()` | `null` | Adds every element |
+| `.useOptic()` | `null` | Adds every element |
+| `.useState()` | `null` | Adds every element |
+| `.useEffect()` | Side Effect | Adds every element |
+| `.useOptic()` | Side Effect | Averages every element |
+| `.useFlash()` | Side Effect | Finds the largest element |
+
+## Creation
+APIs used to create a Refract project and Refract apps, components, and optics.
+
+### `create refract-js my-app`
+Use to quickly create files and install Refract and necessary dependencies.
+
+<Tabs groupId="package-manager">
+    <TabItem value="npm" label="npm" default>
+    ```bash
+    npm create refract-js my-app
+    ```
+    </TabItem>
+    <TabItem value="yarn" label="Yarn">
+    ```bash
+    yarn create refract-js my-app
+    ```
+    </TabItem>
+    <TabItem value="pnpm" label="pnpm">
+    ```bash
+    pnpm create refract-js my-app
+    ```
+    </TabItem>
+</Tabs>
+
+See (not working fix this!)[Example Files](../installation.mdx#example-files) for details.
+
+### `createApp(data)`
+Lorum ipsum
+
+```js title=".createApp Example"
+import { createComponent } from "refract";
+
+const Counter = createComponent(({ lens }) => {
+	const count = lens.useRefraction(0);
+
+	return (
+		<button onClick={() => count.set(count.value + 1)}>
+			Clicked {count.value} times
+		</button>
+	);
+});
+```
+
+### `createComponent(data)`
+
+```js title=".createComponent Example"
+
+```
+
+### `createOptic(data)`
+Creates a reusable hook or logic pattern are grouped as an optic.
+
+Similar to [React hooks](https://react.dev/reference/react/hooks) but with dependency-aware caching and animation-aware transitions.
+
+```js title=".createOptic Example"
+
+```
+
+## Use Commands **use better term**
+
+### `.useState()`
+Lorum ipsum
+
+```js title=".useState Example"
+
+```
+
+### `.useRefraction()`
+Lorum ipsum
+
+```js title=".useRefraction Example"
+import { useRefraction } from "refract";
+
+const theme = useRefraction("light");
+
+theme.set("dark");
+console.log(theme.value); // 'dark'
+```
+
+## Side Effect
+For fully detailed examples see [Side Effects](/concepts/side-effects.md)
+
+### `.useEffect`
+Lorum ipsum
+
+```js title=".useEffect Example"
+
+```
+
+### `.useOptic()`
+Lorum ipsum
+
+```js title=".useOptic Example"
+import { useOptic } from "refract";
+
+function useMousePosition() {
+	const pos = useRefraction({ x: 0, y: 0 });
+
+	useOptic(() => {
+		const handler = (e) => pos.set({ x: e.clientX, y: e.clientY });
+		window.addEventListener("mousemove", handler);
+		return () => window.removeEventListener("mousemove", handler);
+	}, []);
+
+	return pos;
+}
+```
+
+### `.useFlash()`
+Lorum ipsum
+
+**Note**: `useFlash` runs once after render for things like animations.
+
+```js title=".useFlash Example"
+
+```

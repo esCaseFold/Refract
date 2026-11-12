@@ -1,0 +1,170 @@
+---
+title: Quickstart
+sidebar_position: 3
+---
+
+import ClickDemo from "@site/src/components/Examples/ClickDemo";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+
+:::tip[Required]
+[Node.js](https://nodejs.org/en) version 20.0 or above is required to run Refract (which can be checked by running `node -v`).
+//- **Already have [Refract installed](./installation) on your project and the file structure setup**.
+:::
+
+The fastest way to get up and running with Refract is to create a new project and render your first component.
+
+## Set-up
+
+Use the following command to create a new default Refract project:
+<Tabs groupId="package-manager">
+    <TabItem value="npm" label="npm" default>
+    ```bash
+    npm create refract-js my-app-name
+    cd my-app-name
+    ```
+    </TabItem> 
+    <TabItem value="yarn" label="Yarn">
+    ```bash
+    yarn create refract-js my-app-name
+    cd my-app-name
+    ```
+    </TabItem>
+    <TabItem value="pnpm" label="pnpm">
+    ```bash
+    pnpm create refract-js my-app-name
+    cd my-app-name
+    ```
+    </TabItem>
+</Tabs>
+
+## Step 1
+Familiarize yourself with the project structure and write the following the the files. 
+
+```plaintext
+my-app-name/
+├── public/
+│   └── index.html
+├── src/
+│   ├── App.js
+│   └── main.js
+└── vite.config.js
+```
+
+Make sure `vite.config.js` has the following:
+
+```js title="vite.config.js"
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+export default defineConfig({
+	plugins: [react()],
+});
+```
+
+## Step 2
+**Create your HTML root file**
+
+Every Refract app needs an HTML file to serve as the root and to configure the display.
+
+Open `public/index.html` and add the following:
+
+```html title="index.html"
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Refract Starter</title>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script type="module" src="/src/main.js"></script>
+	</body>
+</html>
+```
+
+## Step 3
+**Initialize your Refract app**
+
+Now, you need an entry point to launch your Refract app.
+Inside `src/main.js`, add the following code:
+
+```js title="src/main.js"
+import { createApp } from "refract";
+import App from "./App.js";
+
+const app = createApp(App);
+app.mount("#root");
+```
+
+## Step 4
+**Build your first Refract component!**
+
+Next, let's define a simple component that displays a message and responds to user interaction.
+Open `src/App.js` and add the following:
+
+```jsx title="src/App.js"
+import { createComponent } from "refract";
+
+const App = createComponent(({ lens }) => {
+	const text = lens.useRefraction("Hello from Refract!");
+
+	return (
+		<div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+			<h1>{text.value}</h1>
+			<p>This is your very first Refract component 🎉</p>
+			<button
+				onClick={() => text.set("You clicked the button!")}
+				style={{
+					padding: "10px 20px",
+					backgroundColor: "#007acc",
+					color: "#fff",
+					border: "none",
+					borderRadius: "6px",
+					cursor: "pointer",
+				}}>
+				Click me
+			</button>
+		</div>
+	);
+});
+
+export default App;
+```
+
+## Step 5
+**Run your development server**
+
+Time to see the result!
+
+Start the dev server by running:
+```bash
+vite dev
+```
+
+You should see output similar to:
+```plaintext
+  vite v4.4.5  ready in 123 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h to show help
+  ➜  press q to quit
+```
+
+## Step 6
+**View your app in the browser**
+
+Open your browser and navigate to `http://localhost:5173` (or the URL shown in your terminal). You should see your Refract app displaying the following:
+
+<ClickDemo />
+
+Congratulations! 
+
+You've successfully created and run your first Refract component! 
+From here, you can start exploring more features and building out your application. Happy coding!
+
+## Next Steps
+
+Proceed to the [Concepts](/docs/concepts/components.md) category to understand the core concepts behind Refract and how it can help you build animated UIs.

@@ -29,6 +29,18 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+/* External link icon for links inside docs/blog content @#$!@$%$!#%!#$%% */
+.markdown a[href^="http"]:not([href*="your-site-domain.com"])::after { /*remember to replace "your-site-domain.com" with your actual domain name*/
+  content: "";
+  display: inline-block;
+  width: 13.5px;
+  height: 13.5px;
+  margin-left: 0.3rem;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
 /* Homepage Hero Section */
 .heroBanner {
 	position: relative;
@@ -94,43 +106,4 @@
 	backdrop-filter: blur(10px);
 	color: white;
 	border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Code preview box */
-.codePreview {
-	background: rgba(0, 0, 0, 0.1);
-	padding: 1rem;
-	border-radius: 12px;
-	text-align: left;
-	max-width: 600px;
-	margin: 0 auto;
-}
-
-.codeHeader {
-	display: flex;
-	align-items: center;
-	margin-bottom: 0.5rem;
-}
-
-.codeDots span {
-	display: inline-block;
-	width: 8px;
-	height: 8px;
-	background: white;
-	border-radius: 50%;
-	margin-right: 0.4rem;
-}
-
-.codeTitle {
-	font-weight: 500;
-	margin-left: 0.5rem;
-	color: white;
-}
-
-.codeBlock {
-	background: rgba(0, 0, 0, 0.2);
-	padding: 0.8rem;
-	border-radius: 8px;
-	overflow-x: auto;
-	font-family: "Fira Code", monospace;
 }
