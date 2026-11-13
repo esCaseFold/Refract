@@ -1,11 +1,17 @@
 ---
-title: Optical Composition
+title: Optics
 sidebar_position: 3
 ---
 
-**Optics** are reusable hooks or logic patterns.
+**Optics** are reusable hooks or logic patterns. 
 
 They are similar to [React hooks](https://react.dev/reference/react/hooks) but with dependency-aware caching and animation-aware transitions.
+
+## Why Optics?
+
+
+
+## Example
 
 ```js
 import { useOptic } from "refract";

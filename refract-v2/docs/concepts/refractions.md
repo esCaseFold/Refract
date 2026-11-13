@@ -10,10 +10,10 @@ The are:
 - Can be scoped globally or locally to components.
 
 ## Why Refractions?
-Without a reactive state system, all of it would have to be done manually. This would make building the UI  both needlessly tedious and much more error prone.  
+Without a reactive state system, changing all of the values as needed would have to be done manually. This would make building the UI both needlessly tedious and much more error prone.  
 
 :::tip Refractions are like message boards
-They hold messages (state) that components "look" at. When the message changes, all connected components "see" it and react automatically.
+They contain messages (state) that components "look" at. When the message changes, all connected components "see" it and react automatically.
 :::
 
 ## Basics

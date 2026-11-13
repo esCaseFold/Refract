@@ -23,16 +23,16 @@ The full list of all Refract commands/APIs with its syntax and parameters. For s
 | `refraction.focus(lens)` | Refraction | Returns a focused refraction for a nested property |
 | `derive(fn)` | Refraction | Creates a derived refraction that recomputes when its dependencies change |
 | `effect(fn)` | Refraction | Runs a side effect whenever the refractions accessed inside fn change |
-| `useRefraction(refraction)` | Refraction | Hook for binding a refraction to a React component |
+| `useRefraction(refraction)` | Refraction | Hook for binding a refraction to a Refract component |
 | `lens` | Lens | Creates a new lens |
-| `.useLens()` | Lens | Binds a lens to a React component |
-| `.useOptic()` | Optic | Applies an optic to a lens |
-| `.useState()` | State | Adds a state to a lens |
-| `.useEffect()` | Side Effect | Runs a side effect |
+| `.useLens()` | Lens | Binds a lens to a Refract component |
+| `.useOptic()` | Optic | Applies an optic to a lens in a Refract component |
+| `.useState()` | State | Adds a state to a lens in a Refract component |
+| `.useEffect(setup, dependencies?)` | Side Effect | Accesses outside data for Refract app |
 | `.useOptic()` | Side Effect | Applies an optic to a lens |
 | `.useFlash()` | Side Effect | Runs a flash effect |
 
-### Quickstart:`create refract-js my-app`
+## Quickstart:`create refract-js my-app`
 Use to quickly create files and install Refract and necessary dependencies.
 
 <Tabs groupId="package-manager">
@@ -118,7 +118,7 @@ refraction.focus(lens);
 derive(fn);
 ```
 
-```js title="Hook for binding a refraction to a React component"
+```js title="Hook for binding a refraction to a Refract component"
 useRefraction(refraction);
 ```
 
@@ -159,15 +159,41 @@ theme.set("dark");
 console.log(theme.value); // 'dark'
 ```
 
-## Side Effect
-For fully detailed examples see [Side Effects](../concepts/side-effects.md)
+## Side Effects
+For fully detailed examples see [Side Effects](../concepts/side-effects.md#useeffect)
 
-### `.useEffect`
-Lorum ipsum
+### `useEffect()`
 
-```js title=".useEffect Example"
+#### Signature
+useEffect(setup, dependencies?)
 
-```
+#### Parameters 
+
+`setup`: The function with your Effect's logic. Your setup function may also optionally return a cleanup function. When your component commits, Refract will run your setup function. After every commit with changed dependencies, Refract will first run the cleanup function (if you provided it) with the old values, and then run your setup function with the new values. After your component is removed from the DOM, Refract will run your cleanup function.
+
+optional `dependencies`: The list of all reactive values referenced inside of the setup code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is configured for Refract, it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like [dep1, dep2, dep3]. Refract will compare each dependency with its previous value using the Object.is comparison. If you omit this argument, your Effect will re-run after every commit of the component. See the difference between passing an array of dependencies, an empty array, and no dependencies at all.
+
+#### Returns 
+
+useEffect returns undefined.
+
+#### Caveats
+
+useEffect is a Hook, so you can only call it at the top level of your Refract component or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
+
+If you're not trying to synchronize with some external system, you probably don't need an Effect.
+
+When Strict Mode is on, Refract will run one extra development-only setup+cleanup cycle before the first real setup. This is a stress-test that ensures that your cleanup logic "mirrors" your setup logic and that it stops or undoes whatever the setup is doing. If this causes a problem, implement the cleanup function.
+
+If some of your dependencies are objects or functions defined inside the component, there is a risk that they will cause the Effect to re-run more often than needed. To fix this, remove unnecessary object and function dependencies. You can also extract state updates and non-reactive logic outside of your Effect.
+
+If your Effect wasn't caused by an interaction (like a click), Refract will generally let the browser paint the updated screen first before running your Effect.
+
+If your Effect is caused by an interaction (like a click), Refract may run your Effect before the browser paints the updated screen. This ensures that the result of the Effect can be observed by the event system. Usually, this works as expected. However, if you must defer the work until after paint, such as an alert(), you can use useLayoutEffect instead.
+
+Even if your Effect was caused by an interaction (like a click), Refract may allow the browser to repaint the screen before processing the state updates inside your Effect. Usually, this works as expected. However, if you must block the browser from repainting the screen, you need to replace useEffect with useLayoutEffect.
+
+Effects only run on the client. They don't run during server rendering.
 
 ### `.useOptic()`
 Lorum ipsum

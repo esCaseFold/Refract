@@ -108,7 +108,7 @@ const config: Config = {
             },
             {
               label: 'Concepts',
-              to: '/docs/concepts/components',
+              to: '/docs/concepts/refractions',
             },
             {
               label: 'API Reference',
@@ -149,14 +149,14 @@ const config: Config = {
       // Public API key: it is safe to commit it
       apiKey: '0ca50baee81720eaebc37232a608758f',
 
-      indexName: 'prod_Refract-Docs',
+      indexName: 'Refract Docs',
       // Optional: whether you want to use the new Ask AI feature (undefined by default)
       // askAi: 'YOUR_ALGOLIA_ASK_AI_ASSISTANT_ID',
     },
     // install Biel.ai assistant plugin
     plugins: [
       ['docusaurus-biel',{
-          project: '<YOUR_PROJECT_ID>', // add the project ID
+          project: 'qcn42agvt6', // add the project ID
           headerTitle: 'Refract chatbot assistant',
           version: 'latest'
         }
